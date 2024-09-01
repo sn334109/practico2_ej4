@@ -43,12 +43,10 @@
 
         public bool depositarDinero(decimal montoDeposito, TMoneda tipoMoneda) 
         {
-            decimal topeDeposito = -1;
+            decimal topeDeposito = 0;
             bool estadoDeposito = false;
             //TODO: validar que sea la misma moneda
             //TODO: validar que no supere el tope del tipo de moneda USD/UY
-            if (topeDeposito >= montoDeposito)
-            {
                 //misma moneda ?
                 if (tipoMoneda == moneda)
                 {
@@ -62,7 +60,7 @@
                     }
 
                     //validamos tope
-                    if (montoDeposito <= topeDeposito && topeDeposito != -1)
+                    if (montoDeposito <= topeDeposito)
                     {
                         saldoActual = saldoActual + montoDeposito;
                         estadoDeposito = true;
@@ -78,7 +76,6 @@
                     Console.WriteLine("Error (deposito): Tipo de moneda invalido");
                 }
                 //exception
-            }
 
             return estadoDeposito;
         }
