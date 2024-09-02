@@ -14,14 +14,18 @@
 
             //Pruebas de movimientos
             cuentaSanti.depositarDinero(40000, TMoneda.UY);
-            cuentaSanti.retirarDinero(50000, TMoneda.UY);
+            cuentaSanti.retirarDinero(20000, TMoneda.UY);
 
-            cuentaFernando.depositarDinero(2000, TMoneda.USD);
-            cuentaFernando.retirarDinero(10000, TMoneda.USD);
+
+            cuentaFernando.depositarDinero(500, TMoneda.USD);
+            cuentaFernando.retirarDinero(1000, TMoneda.USD);
 
 
             Console.WriteLine($"Cuenta Santiago Neira: \n {cuentaSanti}");
             Console.WriteLine($"Cuenta Fernando Caram: \n {cuentaFernando}");
+
+
+
 
         }
     }

@@ -47,35 +47,34 @@
             bool estadoDeposito = false;
             //TODO: validar que sea la misma moneda
             //TODO: validar que no supere el tope del tipo de moneda USD/UY
-                //misma moneda ?
-                if (tipoMoneda == moneda)
+            //misma moneda ?
+            if (tipoMoneda == moneda)
+            {
+                if (tipoMoneda == TMoneda.UY)
                 {
-                    if (tipoMoneda == TMoneda.UY)
-                    {
-                        topeDeposito = 50000;
-                    }
-                    else if (tipoMoneda == TMoneda.USD)
-                    {
-                        topeDeposito = 1000;
-                    }
-
-                    //validamos tope
-                    if (montoDeposito <= topeDeposito)
-                    {
-                        saldoActual = saldoActual + montoDeposito;
-                        estadoDeposito = true;
-                        Console.WriteLine($"{titular.ToUpper()} deposito de {montoDeposito} Exitoso! \n");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Error (deposito): el monto supera el tope de 50000 \n");
-                    }
+                    topeDeposito = 50000;
+                }
+                else if (tipoMoneda == TMoneda.USD)
+                {
+                    topeDeposito = 1000;
+                }
+                //validamos tope
+                if (montoDeposito <= topeDeposito)
+                {
+                    saldoActual = saldoActual + montoDeposito;
+                    estadoDeposito = true;
+                    Console.WriteLine($"{titular.ToUpper()} deposito de {montoDeposito} Exitoso! \n");
                 }
                 else
                 {
-                    Console.WriteLine("Error (deposito): Tipo de moneda invalido");
+                    Console.WriteLine("Error (deposito): el monto supera el tope de 50000 \n");
                 }
-                //exception
+            }
+            else
+            {
+                Console.WriteLine("Error (deposito): Tipo de moneda invalido");
+            }
+
 
             return estadoDeposito;
         }
@@ -116,7 +115,7 @@
         {
             return $"Titular Cuenta: {titular.ToString()} \n" +
                    $"{(tipo == TCuenta.CajaAhorro ? "[ CAJA AHORRO PESOS ]" : "[ CUENTA CORRIENTE ]")} \n" +
-                   $"Saldo Disponible: {(moneda == TMoneda.USD ? "DOLARES" : "PESOS" )} {saldoActual} \n" +
+                   $"Saldo Disponible: {saldoActual} {(moneda == TMoneda.USD ? "DOLARES" : "PESOS")} \n" +
                    $"Cuenta en: {(moneda == TMoneda.USD ? "DOLARES" : "PESOS")} \n" +
                    $"Número de cuenta: {nroCuenta} \n";
         }
